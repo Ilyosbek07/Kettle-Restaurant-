@@ -1,0 +1,58 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div class="comment-form container ">
+        <h2>Your Profile</h2>
+        <div class="leave-comment-form">
+            <form method="POST" accept-charset="{% url 'profile:home' %}">
+                {% csrf_token %}
+                {{ form.errors }}
+                <div class="row">
+                    <div class="col-md-7">
+                        <p>{% trans 'First Name' %}</p>
+                        {{ form.first_name }}
+                    </div>
+                    <div class="col-lg-7">
+                        <p>{% trans 'Last Name' %}</p>
+                        {{ form.last_name }}
+                    </div>
+                    <div class="col-lg-7">
+                        <p>{% trans 'Email' %}</p>
+                        {{ form.email }}
+                    </div>
+                    <div class="col-lg-7">
+                        <p>{% trans 'Phone Number' %}</p>
+                        {{ form.phone }}
+                    </div>
+                    <div class="col-lg-7">
+                        <p>{% trans 'Country' %}</p>
+                        {{ form.country }}
+                    </div>
+                    <div class="col-lg-7">
+                        <p>{% trans 'Address' %}</p>
+                        {{ form.address1 }}
+                        {{ form.address2 }}
+                    </div>
+                    <div class="col-lg-7">
+                        <p>{% trans 'City' %}</p>
+                        {{ form.city }}
+                    </div>
+                    <div class="col-lg-6">
+                        <p>{% trans 'State' %}</p>
+                        {{ form.state }}
+                    </div>
+                    <div class="col-lg-4">
+                        <p>{% trans 'Post Code' %}</p>
+                        {{ form.postcode }}
+                    </div>
+                    <div class="float-right col-lg-8">
+                        <button class="submit" type="submit">Change password</button>
+                        <button class="m-4 submit" type="submit">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

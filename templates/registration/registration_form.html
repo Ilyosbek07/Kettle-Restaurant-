@@ -1,0 +1,45 @@
+{% extends "registration/registration_base.html" %}
+{% load i18n %}
+
+{% block title %}{% trans "Register for an account" %}{% endblock %}
+
+{% block content %}
+    <section style="position: relative;
+            height: 100vh;
+            width: 100%;
+            background-image: url('https://plov.press/10414574163463646_8c5d.jpg');
+            background-size: cover;
+            background-position: center center;">
+        <div class="form-container">
+            <h1>Login Form</h1>
+            <form method="Post">
+                {{ form.errors }}
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}"/>
+                <div class="control">
+                    <label>Username</label>
+                    <input name="username" placeholder="Username" type="text" id="name">
+                </div>
+                <div class="control">
+                    <label for="pws">Email</label>
+                    <input name="email" placeholder="Email" type="email" id="pws">
+                </div>
+                <div class="control">
+                    <label>Password</label>
+                    <input name="password1" placeholder="Password" type="password" id="pws">
+                </div>
+                <div class="control">
+                    <label>Comfirm password</label>
+                    <input name="password2" placeholder="Password" type="password" id="pws">
+                </div>
+                <span><input type="checkbox"> Remember me.</span>
+                <div class="control">
+                    <input type="submit" value="Sign up">
+                </div>
+                <div class="link"><a href="{% url 'auth_login' %}">Sing in</a></div>
+            </form>
+        </div>
+    </section>
+
+{% endblock %}
+

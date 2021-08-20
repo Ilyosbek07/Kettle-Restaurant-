@@ -1,0 +1,132 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div class="breadcrumb-area pt-45 pb-45">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb-text text-center">
+                        <h1>{% trans 'Contact' %} </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb-area-end -->
+    <!-- address-area-start -->
+    <div class="address-area pt-100 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4">
+                    <div class="address-wrapper text-center mb-30">
+                        <div class="address-img">
+                            <img src="{% static 'img/address/1.png' %}" alt=""/>
+                        </div>
+                        <div class="address-text">
+                            <h4>{% trans 'ADDRESS' %}</h4>
+                            <span>519 Main Street East <br> New Britain, CT 06051</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4">
+                    <div class="address-wrapper text-center mb-30">
+                        <div class="address-img">
+                            <img src="{% static 'img/address/2.png' %}" alt=""/>
+                        </div>
+                        <div class="address-text">
+                            <h4>{% trans 'EMAIL' %}</h4>
+                            <span>admin@gmail.com <br> deskhelp@example.com</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4">
+                    <div class="address-wrapper text-center mb-30">
+                        <div class="address-img">
+                            <img src="{% static 'img/address/3.png' %}" alt=""/>
+                        </div>
+                        <div class="address-text">
+                            <h4>{% trans 'PHONE' %}</h4>
+                            <span>+998 97 001 01 01 <br> ++998 97 007 07 07</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- address-area-end -->
+    <!-- contact-area-start -->
+    <div class="contact-area pb-90">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <form method="POST" id="contact-form">
+                    {% csrf_token %}
+                        <div class="row">
+                            <div class="col-xl-4 col-md-6">
+                                <input name="name" placeholder="Name" type="text">
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                                <input name="email" placeholder="Email" type="text">
+
+                            </div>
+                            <div class="col-xl-4 col-md-6">
+                                <input name="phone" placeholder="Phone" type="text">
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <textarea name="message" cols="30" rows="10" placeholder="Message"></textarea>
+                                <button type="submit">send message</button>
+                            </div>
+                        </div>
+{#                        <p class="ajax-response"></p>#}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- contact-area-end -->
+    <!-- map-area-start -->
+    <div class="map-area">
+        <div id="contact-map"></div>
+    </div>
+    <!-- map-area-end -->
+    <!-- brand-area-start -->
+    <div class="brand-area yellow-bg pt-75 pb-75">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="brand-active owl-carousel">
+                    <div class="col-xl-12">
+                        <div class="brand-wrapper">
+                            <div class="brand-img">
+                                <img src="{% static 'img/brand/1.png' %}" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="brand-wrapper">
+                            <div class="brand-img">
+                                <img src="{% static 'img/brand/2.png' %}" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="brand-wrapper">
+                            <div class="brand-img">
+                                <img src="{% static 'img/brand/3.png' %}" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="brand-wrapper">
+                            <div class="brand-img">
+                                <img src="{% static 'img/brand/4.png' %}" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

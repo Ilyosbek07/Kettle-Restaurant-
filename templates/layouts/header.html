@@ -1,0 +1,150 @@
+{% load static %}
+{% load i18n %}
+{% load my_tags %}
+
+<header>
+    <div id="sticky-header" class="header-top-area header-2 pr-60 pl-60">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-2">
+                    <div class="logo">
+                        <a href="{% url 'foods:home' %}"><img src="{% static 'img/logo/logo.png' %}" alt=""/></a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-8">
+                    <div class="main-menu text-center">
+                        <nav id="mobile-menu">
+                            <ul>
+                                {% url 'foods:home' as home %}
+                                <li {% if request.path == home %} class="active" {% endif %}>
+                                    <a href="{{ home }}">Home</a>
+                                </li>
+                                {% url 'foods:about' as about %}
+                                <li {% if request.path == about %} class="active" {% endif %}>
+                                    <a href="{% url 'foods:about' %}">About</a>
+                                </li>
+                                <li {% if request.path == shop %} class="active" {% endif %}>
+                                    <a href="{% url 'foods:shop' %}">Shop</a>
+                                </li>
+                                {#                                {% url 'foods:shop' %}#}
+                                {#                                <li {% if request.path == home %} class="active" {% endif %}>#}
+                                {#                                    <a href="#">pages</a>#}
+                                {#                                </li>#}
+                                {% url 'post:blog' as blog %}
+                                <li {% if request.path == blog %} class="active" {% endif %}>
+                                    <a href="{{ blog }}">Blog</a>
+                                </li>
+                                {% url 'pages:contact' as contact %}
+                                <li {% if request.path == contact %} class="active" {% endif %}><a
+                                        href="{{ contact }}">contact</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="mobile-menu"></div>
+                </div>
+                <div class="col-xl-3 col-lg-2">
+                    <div class="header-right f-right d-none d-md-none d-lg-block">
+{#                        <div class="header-button">#}
+{#                            <a href="{% url 'foods:about' %}">get quote</a>#}
+{#                        </div>#}
+                        <ul>
+                            <li><a href="#" data-toggle="modal" data-target="#search-modal"><span
+                                    class="ti-search"></span></a>
+                            </li>
+                            {% url 'foods:card' as card %}
+                            <li {% if request.path == contact %} class="active" {% endif %}><a href="{{ card }}"><span
+                                    class="ti-shopping-cart"></span></a></li>
+                            <li>
+                               ${% cart_price request %}
+                            </li>
+                            <li class="info-bar"><a href="javascript:void(0)"><span class="ti-align-right"></span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="extra-info">
+        <div class="close-icon">
+            <button>
+                <i class="far fa-window-close"></i>
+            </button>
+        </div>
+        <div class="logo-side mb-30">
+            <a href="{% url 'foods:home' %}">
+                <img src="{% static 'img/logo/logo.png' %}" alt=""/>
+            </a>
+        </div>
+        <div class="side-menu mb-30">
+            {% get_current_language as lang %}
+            <span class="mr-2" style="color: #00A0D1">{{ lang }}</span>
+            {% get_available_languages as all_langs %}
+            {% for l in all_langs %}
+                {% if l.0 != lang %}
+                    <a class="m-2" style="color: #f0ad4e; text-decoration: none"
+                       href="{% get_lang_url request l.0 %}">
+                        {{ l.0|upper }}
+                    </a>
+                {% endif %}
+            {% endfor %}
+            <ul>
+                {% if request.user.is_authenticated %}
+                    <li class="mt-2">
+                        <a href="{% url 'profile:home' %}">
+                            {% trans 'Profile' %}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            {% trans 'History' %}
+                        </a>
+                    </li>
+                {% endif %}
+
+                <li>
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'auth_logout' %}">{% trans 'Log out' %}</a>
+                    {% else %}
+                        <a href="{% url 'auth_login' %}">{% trans 'Sign in' %}</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+        <div class="instagram">
+            <a href="{% url 'foods:shop' %}">
+                <img src="{% static 'img/instagram/1.jpg' %}" alt="">
+            </a>
+            <a href="{% url 'foods:shop' %}">
+                <img src="{% static 'img/instagram/2.jpg' %}" alt="">
+            </a>
+            <a href="{% url 'foods:shop' %}">
+                <img src="{% static 'img/instagram/3.jpg' %}" alt="">
+            </a>
+            <a href="{% url 'foods:shop' %}">
+                <img src="{% static 'img/instagram/4.jpg' %}" alt="">
+            </a>
+            <a href="{% url 'foods:shop' %}">
+                <img src="{% static 'img/instagram/5.jpg' %}" alt="">
+            </a>
+            <a href="{% url 'foods:shop' %}">
+                <img src="{% static 'img/instagram/6.jpg' %}" alt="">
+            </a>
+        </div>
+        <div class="social-icon-right mt-20">
+            <a href="#">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-google-plus-g"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </div>
+</header>

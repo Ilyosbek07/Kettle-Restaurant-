@@ -1,0 +1,69 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="breadcrumb-area pt-45 pb-45">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb-text text-center">
+                        <h1>404</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb-area-end -->
+    <!-- error-area-start -->
+    <div class="error-area pt-190 pb-200">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-8 offset-lg-2 offset-xl-2">
+                    <div class="error-text text-center">
+                        <span>error 404</span>
+                        <h1>Oops! page not found</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- error-area-end -->
+    <!-- brand-area-start -->
+    <div class="brand-area yellow-bg pt-75 pb-75">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="brand-active owl-carousel">
+                    <div class="col-xl-12">
+                        <div class="brand-wrapper">
+                            <div class="brand-img">
+                                <img src="{% static 'img/brand/1.png' %}" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="brand-wrapper">
+                            <div class="brand-img">
+                                <img src="{% static 'img/brand/2.png' %}" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="brand-wrapper">
+                            <div class="brand-img">
+                                <img src="{% static 'img/brand/3.png' %}" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="brand-wrapper">
+                            <div class="brand-img">
+                                <img src="{% static 'img/brand/4.png' %}" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

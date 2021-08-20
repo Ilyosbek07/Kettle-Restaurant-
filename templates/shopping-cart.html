@@ -1,0 +1,126 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load my_tags %}
+
+{% block content %}
+    <div class="breadcrumb-area pt-45 pb-45">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb-text text-center">
+                        <h1>cart</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb-area-end -->
+    <!-- cart-area start -->
+    <div class="cart-area pt-100 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="cart-table table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th scope="col">Product Image</th>
+                                <th scope="col">Product NAME</th>
+                                <th scope="col">PRICE</th>
+                                <th scope="col">QUANTITY</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for food in object_list %}
+                                <tr>
+                                    <td>
+                                        <div class="cart-img"><img src="{{ food.image.url }}" alt=""></div>
+                                    </td>
+                                    <td>
+                                        <div class="cart-name"><h4><a href="#">{{ food.title }}</a></h4></div>
+                                    </td>
+                                    <td>
+                                        <div class="cart-price"><span>$ {{ food.price }}</span></div>
+                                    </td>
+                                    <td>
+                                        <div class="cart-select">
+                                            <select name="select" id="select2">
+                                                <option value="">01</option>
+                                                <option value="">01</option>
+                                                <option value="">01</option>
+                                                <option value="">01</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+{#                                        <div class="cart-del"><a href="{% url 'foods:add_to_cart' pk=foods.pk %}">X</a></div>#}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-80">
+                <div class="col-xl-5 offset-xl-7 col-lg-8  offset-lg-4 pl-0">
+                    <div class="section-title mb-20">
+                        <h2>CART TOTALS</h2>
+                    </div>
+                    <div class="cart-total-price">
+                        <ul>
+                            <li>Subtotal <span>$ {% cart_price request %}</span></li>
+                            <li>Total <span>$ {% cart_price request %}</span></li>
+                        </ul>
+                        <div class="text-right"><a class="btn brand-btn" href="{% url 'foods:shop' %}">CONTINUS
+                            SHOPPING</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- cart-area start -->
+    <!-- service-area-start -->
+    <div class="service-area pt-80 pb-40 gray-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="service-wrapper text-center mb-30">
+                        <div class="service-img">
+                            <img src="img/service/service1.png" alt=""/>
+                        </div>
+                        <div class="service-text">
+                            <h3>We cook with passion</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="service-wrapper text-center mb-30">
+                        <div class="service-img">
+                            <img src="img/service/service2.png" alt=""/>
+                        </div>
+                        <div class="service-text">
+                            <h3>Book a table online</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="service-wrapper text-center mb-30">
+                        <div class="service-img">
+                            <img src="img/service/service3.png" alt=""/>
+                        </div>
+                        <div class="service-text">
+                            <h3>Free and fast delivery</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

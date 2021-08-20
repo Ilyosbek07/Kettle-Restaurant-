@@ -1,0 +1,198 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div class="breadcrumb-area pt-45 pb-45">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb-text text-center">
+                        <h1>{% trans 'About' %}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb-area-end -->
+    <!-- benefits-area-start -->
+    <div class="benefits-area pt-100 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6 mb-30">
+                    <div class="benefits-wrapper">
+                        <div class="benefits-section">
+                            <span>{% trans 'Why we are the best' %}</span>
+                            <h1>Our benefits</h1>
+                            <p>Lorem ipwqwrqwrqwrqrqrqwr dolor sit amet, consectetur adipiscing elit, sed do eiu smod
+                                tempor
+                                incididunt ut labore et dolore magna aliqua. </p>
+                        </div>
+                    </div>
+                    <div class="benefits-tab-area mt-25">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" id="home" role="tabpanel"
+                                         aria-labelledby="home-tab">
+                                        {% for abs in about %}
+                                            <div class="row">
+                                                <div class="col-xl-12">
+                                                    <div class="question-collapse">
+                                                        <div id="accordion">
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingOne">
+                                                                    <h5 class="mb-0">
+                                                                        <button class="btn btn-link"
+                                                                                data-toggle="collapse"
+                                                                                data-target="#collapseOne"
+                                                                                aria-expanded="true"
+                                                                                aria-controls="collapseOne">
+                                                                            {{ abs.title }}
+                                                                        </button>
+                                                                    </h5>
+                                                                </div>
+
+                                                                <div id="collapseOne" class="collapse show"
+                                                                     aria-labelledby="headingOne"
+                                                                     data-parent="#accordion">
+                                                                    <div class="card-body">
+                                                                        <p>{{ abs.content|safe }}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6">
+                    <div class="benefits-img mb-30">
+                        <img src="{% static 'img/benefits/benefits1.jpg' %}" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- benefits-area-end -->
+    <!-- counter-area-start -->
+    <div class="counter-area pt-130 pb-105" style="background-image:url({% static 'img/bg/bg1.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-6">
+                    <div class="counter-wrapper mb-30 text-center">
+                        <div class="counter-text">
+                            <h1 class="counter">10</h1>
+                            <span>YEARS OF <br> EXPERIENCE</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6">
+                    <div class="counter-wrapper mb-30 text-center">
+                        <div class="counter-text">
+                            <h1 class="counter">120</h1>
+                            <span>Successful <br> entrepreneurs</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6">
+                    <div class="counter-wrapper mb-30 text-center">
+                        <div class="counter-text">
+                            <h1 class="counter">80</h1>
+                            <span>COMPANIES <br> FOUNDED</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6">
+                    <div class="counter-wrapper mb-30 text-center">
+                        <div class="counter-text">
+                            <h1 class="counter">240</h1>
+                            <span>BOOKS, DVDS <br> & PODCASTS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- counter-area-end -->
+    <!-- our-staffs-area-start -->
+    <div class="our-staffs-area pt-90 pb-65">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-10 col-lg-10 offset-lg-1 offset-xl-1">
+                    <div class="staffs-title text-center mb-65">
+                        <h1>Our Staffs</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for chef in chefs %}
+                    <div class="col-xl-3 col-lg-3 col-md-6">
+                        <div class="our-staffs-wrapper text-center mb-30">
+                            <div class="our-staffs-img">
+                                <img src="{{ chef.image.url }}" alt=""/>
+                            </div>
+                            <div class="our-staffs-text">
+                                <h4>{{ chef.name }}</h4>
+                                <span>{{ chef.job }}</span>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- our-staffs-area-end -->
+    <!-- service-area-start -->
+    <div class="service-area pt-80 pb-40 gray-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="service-wrapper text-center mb-30">
+                        <div class="service-img">
+                            <img src="{% static 'img/service/service1.png' %}" alt=""/>
+                        </div>
+                        <div class="service-text">
+                            <h3>We cook with passion</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="service-wrapper text-center mb-30">
+                        <div class="service-img">
+                            <img src="{% static 'img/service/service2.png' %}" alt=""/>
+                        </div>
+                        <div class="service-text">
+                            <h3>Book a table online</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="service-wrapper text-center mb-30">
+                        <div class="service-img">
+                            <img src="{% static 'img/service/service3.png' %}" alt=""/>
+                        </div>
+                        <div class="service-text">
+                            <h3>Free and fast delivery</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

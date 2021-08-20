@@ -1,0 +1,177 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+    <div class="breadcrumb-area pt-45 pb-45">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="breadcrumb-text text-center">
+                        <h1>{% trans 'Blog' %}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb-area-end -->
+    <!-- news-area-start -->
+    <div class="news-area pt-100 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-8 mb-30">
+                    {% for blog in object_list %}
+                        <div class="news-wrapper single-news mb-55">
+                            <div class="news-img">
+                                <a href="{% url 'post:detail' pk=blog.pk %}">
+                                    <img src="{{ blog.image.url }}" alt=""/></a>
+                            </div>
+                            <div class="news-text">
+                                <span>{{ blog.created_at|date:'d M Y' }}</span>
+                                <h3><a href="{% url 'post:detail' pk=blog.pk %}">{{ blog.title }}</a></h3>
+                                {{ blog.content|safe }}
+                                <a href="{% url 'post:detail' pk=blog.pk %}">READ ARTICLE <i
+                                        class="fas fa-long-arrow-alt-right"></i></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="row">
+                        <div class="col-xl-12 pt-35">
+                            <div class="pagination text-center">
+                                <ul>
+
+                                    {% if page_obj.has_previous %}
+                                        <li>
+                                            <a href="?page={{ page_obj.previous_page_number }}">
+                                                <i class="fas fa-angle-double-left"></i>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+                                    {% for page in page_obj.paginator.page_range %}
+                                        <li class="{% if page_obj.number == forloop.counter %} active {% endif %}">
+                                            <a href="?page={{ page }}">
+                                                <span>{{ page }}</span>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+
+                                    {% if page_obj.has_next %}
+                                        <li>
+                                            <a href="?page={{ page_obj.next_page_number }}">
+                                                <i class="fas fa-angle-double-right"></i>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 mb-30">
+                    <div class="widget mb-35">
+                        <div class="sidebar-form">
+                            <form>
+                                <input value="{{ request.GET.s }}" name="s" placeholder="Search" type="text">
+                                <button type="submit">
+                                    <span class="ti-search"></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="widget mb-55">
+                        <h4 class="widget-title">Categories</h4>
+                        <ul class="blog-menu">
+                            {% for cat in categories.all %}
+                                <li>
+                                    <a
+                                            {% if request.GET.cat == cat.pk %}
+                                                style="color:  crimson" {% endif %}
+                                                href="?cat={{ cat.pk }}">{{ cat.title }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="widget mb-55">
+                        <h4 class="widget-title">Latest Posts</h4>
+                        <div class="sidebar-rc-post">
+                            <ul>
+                                {% for news in blogs %}
+                                    <li>
+                                        <div class="rc-post-thumb">
+                                            <a href={% url 'post:detail' pk=news.pk %}>
+                                                <img src="{{ news.image.url }}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="rc-post-content">
+                                            <h4>
+                                                <a href="{% url 'post:detail' pk=news.pk %}">{{ news.title }}</a>
+                                            </h4>
+                                            <div class="widget-date">{{ news.created_at|date:'d, M Y' }}</div>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <h4 class="widget-title">Popular Tags</h4>
+                        <div class="widget-tags">
+                            <ul class="sidebar-tad">
+                                {% for tag in tags.all %}
+                                    <li>
+                                        <a
+                                                {% if request.GET.tag == tag.pk %} class="widget-title"
+                                                                                   style="background-color: #0b0b0b" {% endif %}
+                                                                                   href="?tag={{ tag.pk }}">{{ tag.title }}
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- news-area-end -->
+    <!-- brand-area-start -->
+    <div class="brand-area yellow-bg pt-75 pb-75">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="brand-active owl-carousel">
+                    <div class="col-xl-12">
+                        <div class="brand-wrapper">
+                            <div class="brand-img">
+                                <img src="{% static 'img/brand/1.png' %}" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="brand-wrapper">
+                            <div class="brand-img">
+                                <img src="{% static 'img/brand/2.png' %}" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="brand-wrapper">
+                            <div class="brand-img">
+                                <img src="{% static 'img/brand/3.png' %}" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="brand-wrapper">
+                            <div class="brand-img">
+                                <img src="{% static 'img/brand/4.png' %}" alt=""/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
